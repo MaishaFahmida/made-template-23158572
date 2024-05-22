@@ -9,7 +9,6 @@ Exploring Climate Change and the Coming Wave of Health Issues
 <!-- Think about one main question you want to answer based on the data. -->
 1. How do variations in temperature (extreme heat and cold) affect mortality and morbidity rates?
 2. Can we identify correlations between climate events (heatwaves, floods) and hospital admissions for respiratory illnesses or cardiovascular issues?
-3. How does air quality (pollution levels) change due to climate factors (wildfires), and how does this impact public health, especially respiratory problems?
 
 
 ## Description
