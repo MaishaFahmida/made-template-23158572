@@ -17,12 +17,7 @@ block TemperatureZipInterpreter oftype ArchiveInterpreter {
     }
 
 
-transform CelsiusToFahrenheit {
-    from Celsius oftype decimal;
-    to Fahrenheit oftype decimal;
 
-    Fahrenheit: (Celsius * 9/5) + 32 ;
-}
 
 
 
@@ -49,6 +44,13 @@ transform CelsiusToFahrenheit {
     valuetype Monthly oftype integer {
         constraints:[MonthConstraint];
     }
+
+    transform CelsiusToFahrenheit {
+    from Celsius oftype decimal;
+    to Fahrenheit oftype decimal;
+
+    Fahrenheit: (Celsius * 9/5) + 32 ;
+}
 
 block TemperatureTableTransformer oftype TableTransformer {
         inputColumns: ['temperature',];
