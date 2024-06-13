@@ -1,0 +1,85 @@
+pipeline WeatherPipeline {
+
+    block TemperatureExtractor oftype HttpExtractor {
+        url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+    }
+
+block TemperatureZipInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+    }
+ block TemperatureConditionFilePicker oftype FilePicker {
+        path: "/data.csv";
+    }
+ block TemperatureConditionFileInterpreter oftype TextFileInterpreter {
+    }
+ block TemperatureConditionCSVInterpreter oftype CSVInterpreter   {
+    delimiter: ";";
+    }
+
+
+transform CelsiusToFahrenheit {
+    from tempCelsius oftype decimal;
+    to tempFahrenheit oftype decimal;
+
+    tempFahrenheit: (tempCelsius * 9/5) + 32 ;
+}
+
+
+
+ block RenameHeader oftype CellWriter {
+        at: range A1:F1;
+        write: ["id", "producer", "model", "month", "temperature", "battery_temperature"];
+    }
+    
+  block TemperatureConditionTableInterpreter oftype TableInterpreter    {
+        header: true;
+        columns: [
+        "id" oftype integer,
+        "producer" oftype text,
+        "model" oftype text,
+        "month" oftype Monthly,
+        "temperature" oftype decimal,
+        "battery_temperature" oftype decimal,
+        ];
+    }
+
+  constraint MonthConstraint on integer:
+        value >= 1 and value <= 12;
+    
+    valuetype Monthly oftype integer {
+        constraints:[MonthConstraint];
+    }
+
+block TemperatureTableTransformer oftype TableTransformer {
+        inputColumns: ['temperature',];
+        outputColumn: 'temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    block BatteryTemperatureTableTransformer oftype TableTransformer {
+        inputColumns: ['battery_temperature',];
+        outputColumn: 'battery_temperature';
+        use: CelsiusToFahrenheit;
+    }
+block temperatureLoader oftype SQLiteLoader {
+        table:'temperatures';
+        file:'temperatures.sqlite';
+    }
+
+tempExtractor
+        -> TemperatureZipInterpreter
+        -> TemperatureConditionFilePicker
+        -> TemperatureConditionFileInterpreter 
+        -> TemperatureConditionCSVInterpreter
+        -> RenameHeader
+        -> TemperatureConditionTableInterpreter
+        -> TemperatureTableTransformer
+        -> BatteryTemperatureTableTransformer
+        -> temperatureLoader;
+       
+
+
+
+
+}
+
