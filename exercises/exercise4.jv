@@ -53,13 +53,13 @@ block TemperatureZipInterpreter oftype ArchiveInterpreter {
 }
 
 block TemperatureTableTransformer oftype TableTransformer {
-        inputColumns: ['temperature',];
+        inputColumns: ['temperature'];
         outputColumn: 'temperature';
         use: CelsiusToFahrenheit;
     }
 
-    block BatteryTemperatureTableTransformer oftype TableTransformer {
-        inputColumns: ['battery_temperature',];
+block BatteryTemperatureTableTransformer oftype TableTransformer {
+        inputColumns: ['battery_temperature'];
         outputColumn: 'battery_temperature';
         use: CelsiusToFahrenheit;
     }
