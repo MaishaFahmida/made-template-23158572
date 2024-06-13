@@ -49,7 +49,7 @@ block TemperatureZipInterpreter oftype ArchiveInterpreter {
     from Celsius oftype decimal;
     to Fahrenheit oftype decimal;
 
-    Fahrenheit: (Celsius * 9/5) + 32 ;
+    Fahrenheit: (Celsius * 9/5) + 32;
 }
 
 block TemperatureTableTransformer oftype TableTransformer {
