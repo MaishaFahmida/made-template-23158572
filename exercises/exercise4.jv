@@ -18,10 +18,10 @@ block TemperatureZipInterpreter oftype ArchiveInterpreter {
 
 
 transform CelsiusToFahrenheit {
-    from tempCelsius oftype decimal;
-    to tempFahrenheit oftype decimal;
+    from Celsius oftype decimal;
+    to Fahrenheit oftype decimal;
 
-    tempFahrenheit: (tempCelsius * 9/5) + 32 ;
+    Fahrenheit: (Celsius * 9/5) + 32 ;
 }
 
 
