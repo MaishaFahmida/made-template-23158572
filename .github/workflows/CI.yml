@@ -29,4 +29,4 @@ jobs:
       run: |
       
         chmod +x project/tests.sh
-         paths: .project/tests.sh
+         paths: main/project/tests.sh
