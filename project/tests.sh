@@ -1,6 +1,7 @@
 #!/bin/bash
-
 # Run the data pipeline
+
+chmod +x project/tests.sh
 echo "Running the data pipeline..."
 ./pipeline.sh
 
