@@ -13,7 +13,7 @@ OUTPUT_FILE="sqlite:///../data/Final_Data.db"
 if [ -f "$OUTPUT_FILE" ]; then
     echo "Database file exists: $OUTPUT_FILE"
 else
-    echo "Error: Database file does not exist!"
+    echo "Error: Database file  not found!"
     exit 1
 fi
 
