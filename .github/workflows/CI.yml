@@ -25,5 +25,5 @@ jobs:
 
     - name: Run tests
       run: |
-        chmod +x project/tests.py
+        
           .project/tests.py
