@@ -1,4 +1,4 @@
-# .github/workflows/project.yml
+
 name: CI
 
 on:
