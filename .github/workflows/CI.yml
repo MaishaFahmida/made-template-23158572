@@ -28,5 +28,4 @@ jobs:
     - name: Run tests
       run: |
       
-        chmod +x project/tests.sh
-         paths: project/tests.sh
+        .project/tests.py
