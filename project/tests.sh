@@ -7,7 +7,7 @@ echo "Running the data pipeline..."
 
 # Check if the output file exists
 #OUTPUT_FILE="../data/data_base.db"
-OUTPUT_FILE="../data/Final_Data.db"
+OUTPUT_FILE="sqlite:///../data/Final_Data.db"
 #sqlite:///../data/Final_Data.db
 
 if [ -f "$OUTPUT_FILE" ]; then
