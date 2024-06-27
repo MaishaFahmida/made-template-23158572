@@ -1,22 +1,21 @@
 #!/bin/bash
-python -m unittest discover -s . -p 'tests.py'
-<<<<<<< HEAD
-chmod +x tests.sh
-./tests.sh
-#!/bin/bash
-# Make sure this script is correctly located at project/tests.sh
 
-echo "Running tests..."
-pytest
-chmod +x project/tests.sh
-git add project/tests.sh
-git commit -m "Make tests.sh executable"
+# Run the data pipeline
+echo "Running the data pipeline..."
+./pipeline.sh
 
-git add .github/workflows/CI.yml
-git commit -m "Fix path and script references for tests.sh"
-git push origin main
+# Check if the output file exists
+OUTPUT_FILE="../data/data_base.db"
 
-=======
-chmod +x project/tests.sh
-.project/tests.sh
->>>>>>> a1f8e1fb7a238c7b10d3d2c53be994c2e7c75f9e
+if [ -f "$OUTPUT_FILE" ]; then
+    echo "Database file exists: $OUTPUT_FILE"
+else
+    echo "Error: Database file does not exist!"
+    exit 1
+fi
+
+# Run the Python tests
+echo "Running the Python tests..."
+pytest tests.py
+
+echo "All tests completed!"
