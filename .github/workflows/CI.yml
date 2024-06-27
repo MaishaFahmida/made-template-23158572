@@ -26,7 +26,9 @@ jobs:
         pip install -r project/requirements.txt
 
     - name: Run tests
+    
       run: |
+        paths: ["project/tests.sh","project/tests.py","project/pipeline.py"]
         chmod +x project/tests.sh
           .project/tests.sh
            paths: ["project/tests.sh","project/tests.py","project/pipeline.py"]
