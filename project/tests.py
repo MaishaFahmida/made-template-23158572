@@ -35,12 +35,12 @@ class TestPipeline(unittest.TestCase):
         result = pd.read_sql("SELECT * FROM Transformed_Air_Temperature", self.engine)
         self.assertFalse(result.empty, "Transformed_Air_Temperature table should not be empty")
 
-    @classmethod
-    def tearDownClass(cls):
+   # @classmethod
+    #def tearDownClass(cls):
         
-        cls.engine.dispose()
+        #cls.engine.dispose()
         
-        os.remove('../data/Test_Data.db')
+       # os.remove('../data/Test_Data.db')
 
 if __name__ == '__main__':
     unittest.main()
