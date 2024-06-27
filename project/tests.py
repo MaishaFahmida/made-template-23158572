@@ -1,5 +1,5 @@
 import unittest
-import os
+import os, requests
 import pandas as pd
 from sqlalchemy import create_engine
 from pipeline import Pipeline
